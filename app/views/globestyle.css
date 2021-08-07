@@ -1,0 +1,74 @@
+body{
+  background-color:#000000;
+}
+
+
+ h1{
+  color: whitesmoke; 
+  font-family: 'Oswald', sans-serif;
+ }
+
+.btn {
+  border: none;
+  background-color: rgb(22, 6, 6);
+ padding-bottom: 1%;
+  /* font-size: 1em; */
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+
+.btn{
+  border: none;
+  background-image: linear-gradient(to bottom right,rgb(182, 0, 0), rgb(182, 5, 5), rgb(184, 0, 0));
+  color: whitesmoke;
+  text-decoration: none;
+  display: block;
+  font-size: 1.5em;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px 5px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  height: 9%;
+  width: 10%;
+  padding-top: 1%;
+
+}
+
+.btn:hover {
+  background-image: linear-gradient( rgb(255, 255, 255), rgb(224, 224, 224));
+  color:rgb(0, 0, 0);
+  font-family: 'Oswald', sans-serif;
+  text-shadow: 6px 6px 6px  rgba(0, 0, 0, 0.5) ;
+}
+
+
+.btn:active {
+  transform: translateY(10px);
+ 
+}
+
+.logo {
+  width:10% ;
+  height: 20% ;
+}
+
+.text{
+  color: whitesmoke;
+  font-family: 'Oswald', sans-serif; 
+  font-size: 2em;
+}
+
+.input{
+  width: 10%;
+}
+
+.inputN{
+  width: 14%;
+}
+
+.inputE{
+  width: 14.3%;
+}
