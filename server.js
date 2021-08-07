@@ -18,7 +18,7 @@ const Sequelize = require('sequelize');
 
 
 db.sequelize.sync({ force: true }).then (() => { //drop and resync
-    console.log("Drop and re-sync db.");
+    console.log("Drop and re-sync db.")});
 
 const es6Renderer = require('express-es6-template-engine');
 app.engine('html', es6Renderer);
