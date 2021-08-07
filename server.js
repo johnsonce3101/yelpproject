@@ -34,7 +34,18 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.send('Hello World')
 });
-
+// Route to render login page
+app.get('/login', (req, res) => {
+    res.render('../app/views/login')
+});
+// Route to render register page
+app.get('/register', (req, res) => {
+    res.render('../app/views/register')
+});
+// Route to render dashboard
+app.get('/dashboard', (req, res) => {
+    res.render('../app/views/dashboard', {user: 'Jonathan'})
+});
 //parse requrest of content-type - application/json
 app.use(express.json());
 
