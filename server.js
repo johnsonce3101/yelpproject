@@ -1,3 +1,5 @@
+console.log("App running")
+
 //express setup, for REST API
 const express = require('express');
 const app = express();
@@ -56,4 +58,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
     console.log(`Server is running at ${PORT}`)
-});
+});;
