@@ -42,6 +42,10 @@ let restaurants = db.any("SELECT * FROM restaurants").then( (restaurant) => {
     console.log(restaurant)
 })
 
+app.get('/', (req, res) => {
+    res.json({success: 'true'})
+})
+
 //Controller to render the index route
 const rootController = require('./routes/index');
 
