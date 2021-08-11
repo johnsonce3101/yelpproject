@@ -1,9 +1,9 @@
-console.log("App running")
 
 //express setup, for REST API
 const express = require('express');
 const app = express();
 const path = require('path');
+const pgp = require('pg-promise')();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true})); //extended true, any type
@@ -20,8 +20,6 @@ app.use(cors(corsOptions));
 
 const Sequelize = require('sequelize');
 
-const db = require('./models')
-
 // db.sequelize.sync({ force: true }).then (() => { //drop and resync
 //     console.log("Drop and re-sync db.")});
 
@@ -32,7 +30,14 @@ app.set('views', 'templates');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-const PORT = process.env.PORT || 8080; //changed default port to 8080
+const PORT = process.env.PORT || 8000; //changed default port to 8080
+
+// connecting database
+const db = pgp("postgres://localhost:5432/yelpdb")
+
+let restaurants = db.any("SELECT * FROM restaurants").then( (restaurant) => {
+    console.log(restaurant)
+})
 
 //Controller to render the index route
 const rootController = require('./routes/index');
