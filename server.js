@@ -26,8 +26,6 @@ app.set('views', 'templates');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-const PORT = process.env.PORT || 8002; 
-
 //Controller to render the index route
 const rootController = require('./routes/index');
 app.use('/',rootController);
