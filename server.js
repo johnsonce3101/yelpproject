@@ -19,39 +19,11 @@ app.use(cors(corsOptions));
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize({
-    HOST: "localhost",
-    USER: "postgres",
-    PASSWORD: "123",
-    DB: "booksinspace",
-    dialect: "postgres",
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  });
-
-// db.sequelize.sync({ force: true }).then (() => { //drop and resync
-//     console.log("Drop and re-sync db.")});
-
 const es6Renderer = require('express-es6-template-engine');
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
-
-const PORT = process.env.PORT || 8000; //changed default port to 8080
-
-// connecting database
-let restaurants = db.any("SELECT * FROM restaurants").then( (restaurant) => {
-    console.log(restaurant)
-})
-
-app.get('/', (req, res) => {
-    res.json({success: 'true'})
-})
+app.set('view engine', 'html'); 
 
 //Controller to render the index route
 const rootController = require('./routes/index');
