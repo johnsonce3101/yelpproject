@@ -11,9 +11,10 @@ CREATE TABLE restaurants (
 INSERT INTO restaurants 
     (name,location,stars)
 VALUES
-    ('Subway', '11936 Bellaire Blvd', 5),
-    ('Pizzahut', '89402 Test Rd', 3)
+    ('Subway', '11936 Bellaire Blvd', 5)
 ;
 
 -- This is how you display the tables within a db
 \dt
+
+SELECT * FROM restaurants

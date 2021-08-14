@@ -1,0 +1,29 @@
+<!-- THIS IS THE NAVBAR TEMPLATE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Restaurant Review</title>
+</head>
+
+<body>
+
+   <nav>
+       <div class="nav-items" style="list-style-type: none; margin-left: 100px; padding: 0px 14px; font-weight: bold; font-size:large">
+            <li><a href="#" style="padding-right:20px;">Write A Review</a></li>
+            <li><a href="/users/login">Log In</a></li>
+            <li><a href="/users/register" style="padding-left: 20px;">Register</a></li>
+            <li><a href="#" style="padding-left: 50rem;">Restaurants</a></li>
+        </div>
+   </nav>
+
+   <!-- THIS IS RENDERING THE INDEX PAGE -->
+   ${partial}
+
+</body>
+</html>
