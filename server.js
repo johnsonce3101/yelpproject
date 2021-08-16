@@ -10,12 +10,12 @@ app.use(express.urlencoded({ extended: true })); //extended true, any type
 app.use(express.static('public'));
 
 //cors setup for api running on different domain (if 2 deployments)
-const cors = require ("cors");
-var corsOptions = {
-    origin: "http://localhost:8081" //CHANGE FROM LOCAL
-};
+// const cors = require ("cors");
+// var corsOptions = {
+//     origin: "http://localhost:8081" //CHANGE FROM LOCAL
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 const Sequelize = require('sequelize');
   
