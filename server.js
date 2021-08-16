@@ -18,6 +18,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const Sequelize = require('sequelize');
+  
 
 const es6Renderer = require('express-es6-template-engine');
 app.engine('html', es6Renderer);
