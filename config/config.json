@@ -5,7 +5,7 @@
       "database": "d2e2ohdpssmk38",
       "host": "ec2-34-204-128-77.compute-1.amazonaws.com",
       "dialect": "postgres",
-      "dialectOptions": {
+      "dialectOptions": { 
         "ssl": {
           "require": true,
           "rejectUnauthorized": false
@@ -25,7 +25,7 @@
       "database": "d2e2ohdpssmk38",
       "host": "ec2-34-204-128-77.compute-1.amazonaws.com",
       "dialect": "postgres",
-      "dialectOptions": {
+      "dialectOptions": { 
         "ssl": {
           "require": true,
           "rejectUnauthorized": false
@@ -33,3 +33,5 @@
     }
     }
   }
+
+  
