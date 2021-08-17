@@ -1,18 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+body{
+    background-color:#000000;
+    background-image: url("../styles/food.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  .logo {
+    width: 10% ;
+    height: 20% ;
+    display: inline;
+    margin-left: 45%;
+    margin-top: 3%;
+   
+  }
+  
+ 
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Oswald', sans-serif; 
 }
 
-body {
+/* body {
     box-sizing: border-box;
     margin: 0;
     padding:0;
-}
+} */
 
 .nav-items {
     display: flex;
-    
 }
 
 .nav-items a{
@@ -21,12 +37,304 @@ body {
 
 }
 
-.nav-items a:hover {
-    border-bottom: 2px #fff;
+.hover:hover {
+    border-bottom: 2px solid  #D32323;
+    color: #fff
 }
 
-section h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hover{
+    padding: 12px 11px 9px 11px;
+    line-height: 3.5rem;
 }
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+   
+}
+
+  
+  .btnr {
+    border: none;
+    background-color: rgb(22, 6, 6);
+    cursor: pointer;
+    display: block;
+    position: relative;
+    margin-top: 6%;
+    justify-content: center;
+  }
+  
+  .btnr{
+    border: none;
+    background-image: linear-gradient(to bottom right,rgb(182, 0, 0), rgb(182, 5, 5), rgb(184, 0, 0));
+    color: whitesmoke;
+    text-decoration: none;
+    display: block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px 5px;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    height: 3rem;
+    width: 7rem;
+    padding-top: 5px;
+    font-size: 1.5rem;
+  }
+  
+  .btnr:hover {
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(224, 224, 224));
+    color:rgb(0, 0, 0);
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 6px 6px 6px  rgba(0, 0, 0, 0.5) ;
+  }
+  
+  
+  .btnr:active {
+    transform: translateY(10px);
+   
+  }
+
+
+
+
+
+
+@media (min-width:200px) {
+    .btn{
+      font-size: .7em;
+      height: 1.5rem;
+    width: 3rem;
+      padding-top:3px;
+  
+    }
+  
+  }
+  
+  
+  @media (min-width:200px) {
+    .btnr{
+      font-size: .7em;
+      height: 1.5rem;
+    width: 3rem;
+      padding-top:3px;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food2.jpeg");
+      background-repeat: no-repeat;
+      background-size: 1000%;
+      
+    }
+  
+  }
+  
+  
+  
+  
+  
+  @media (min-width:320px) {
+    .btn{
+      font-size: .7em;
+      height: 1.5rem;
+    width: 3rem;
+      padding-top:3px;
+  
+    }
+  
+  }
+  
+  
+  @media (min-width:320px) {
+    .btnr{
+      font-size: .7em;
+      height: 1.5rem;
+    width: 3rem;
+      padding-top:3px;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food2.jpeg");
+      background-repeat: no-repeat;
+      background-size: 800%;
+      
+    }
+  
+  
+  }
+  
+  
+  @media (min-width:480px) {
+    .btn{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+    }
+  
+  }
+  
+  
+  @media (min-width:480px) {
+    .btnr{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food2.jpeg");
+      background-repeat: no-repeat;
+      background-size: auto;
+      
+    }
+    
+  }
+  
+  
+  
+  @media (min-width:576px) {
+    .btn{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+    }
+  
+  }
+  
+  
+  @media (min-width:768px ) {
+    .btn{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+  
+    }
+  }
+  
+  @media (min-width:576px ) {
+    .btnr{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food2.jpeg");
+      background-repeat: no-repeat;
+      background-size: auto;
+      
+    }
+    
+  }
+  
+  
+  @media (min-width:768px ) {
+    .btnr{
+      font-size: 1em;
+      height: 2rem;
+    width: 4rem;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food7.jpg");
+      background-repeat: no-repeat;
+      background-size: auto;
+      
+    }
+  }
+  
+  
+  
+  @media (min-width:992px) {
+    .btn{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+  
+    }
+  }
+  
+  @media (min-width:992px) {
+    .btnr{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food5.jpg");
+      background-repeat: no-repeat;
+      background-size: 200%;
+      
+    }
+  
+  }
+    
+  
+  @media (min-width:1024px) {
+    body{
+      background-color:#000000;
+      background-image: url("./food6.jpg");
+      background-repeat: no-repeat;
+      background-size: 125%;
+      
+    }
+  
+  }
+  
+
+  @media (min-width:1200px) {
+    .btn{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+  
+    }
+  }
+  
+  @media (min-width:1200px) {
+    .btnr{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+      
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food4.jpg");
+      background-repeat: no-repeat;
+      background-size: 110%;
+      
+    }
+  
+  }
+  
+  @media (min-width:1400px) {
+    .btn{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+  
+    }
+  }
+  
+  @media (min-width:1400px) {
+    .btnr{
+      font-size: 1.5em;
+      height: 3rem;
+    width: 8rem;
+  
+    }
+    body{
+      background-color:#000000;
+      background-image: url("./food.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+    }
+  }
