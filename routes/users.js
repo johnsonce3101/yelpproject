@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-
+const userModel = require('../models')
 router.get('/login', (req, res) => {
     res.render('login')
 });
@@ -11,8 +11,17 @@ router.get('/register', (req, res) => {
 });
 
 
-router.post('/register', async (req, res) => {
-    
+router.post('/register', (req, res) => {
+    userModel.users.findOne({
+        where: {
+            user_name: req.body.user_name
+        }
+    }).then(user => {
+        console.log(user.user_name)
+        res.render('template', {
+            message: "Registered!"
+        })
+    })
 });
 
 
