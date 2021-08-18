@@ -1,6 +1,6 @@
 body{
   background-color:#000000;
-  background-image: url("food2.jpeg");
+  background-image: url("../styles/food2.jpeg");
   background-repeat: no-repeat;
   background-size: auto;
   
@@ -159,13 +159,6 @@ body{
     padding-top:3px;
 
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
-  }
 
 }
 
@@ -193,14 +186,6 @@ body{
     padding-top:3px;
 
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
-  }
-
 
 }
 
@@ -221,13 +206,6 @@ body{
     height: 2rem;
   width: 4rem;
 
-  }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
   }
   
 }
@@ -260,13 +238,6 @@ body{
   width: 4rem;
 
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
-  }
   
 }
 
@@ -278,13 +249,7 @@ body{
   width: 4rem;
 
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
-  }
+  
 }
 
 
@@ -304,13 +269,6 @@ body{
     height: 3rem;
   width: 8rem;
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    
-  }
 
 }
 
@@ -328,13 +286,6 @@ body{
     font-size: 1.5em;
     height: 3rem;
   width: 8rem;
-    
-  }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
     
   }
 
@@ -356,13 +307,7 @@ body{
   width: 8rem;
 
   }
-  body{
-    background-color:#000000;
-    background-image: url("food.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-  }
+  
 }
 
 
