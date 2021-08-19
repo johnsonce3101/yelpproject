@@ -3,7 +3,7 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const db = require('../models');
 const Users = db.Users;
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 
 

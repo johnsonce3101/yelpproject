@@ -6,6 +6,7 @@ const path = require('path');
 const PORT = process.env.PORT || 8002; 
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const bcrypt = require('bcrypt');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //extended true, any type
 //express setup for static css and js
