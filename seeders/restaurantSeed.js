@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('restaurants', [{
-      name: 'Subway',
+      restaurant_name: 'Subway',
       location: '250 park ave w',
       rating: '4',
       createdAt: new Date(),
