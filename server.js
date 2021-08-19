@@ -4,13 +4,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 8002; 
-const bodyParser = require("body-parser");
-
+const bodyParser = require('body-parser');
+const passport = require('passport');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //extended true, any type
 //express setup for static css and js
 app.use(express.static('public'));
-app.use(session({ secret: "cats" })); //dont store here
+//app.use(session({ secret: "cats" })); //dont store here
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
