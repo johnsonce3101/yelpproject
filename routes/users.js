@@ -5,7 +5,7 @@ const db = require('../models');
 const Users = db.Users;
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
-
+const ensureAuthenticated = require('../routes/ensureAuthenticated');
 
 router.use(bodyParser.json())
 
