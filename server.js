@@ -1,5 +1,5 @@
 //express setup, for REST API
-require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+require('dotenv').config();
 
 const Sequelize = require('sequelize');
   
