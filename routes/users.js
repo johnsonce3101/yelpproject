@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json())
 
 router.post('/login', (req, res, next) => {
-    let { username, password } = req.body;
+    let { userName, password } = req.body;
     passport.authenticate('local',
         (err, user, info) => {
             if (err) { return next(err); }
@@ -38,15 +38,15 @@ router.get('/register', (req, res) => {
 
 
 router.post('/register', async (req, res) => {
-    let{username, password} = req.body
+    let{userName, password} = req.body
     let error;
-    if (!username || !password) {
+    if (!userName || !password) {
         error ="Please have a brain and fill out the fields.";
     }
     if (password && password.length < 5) {
         error = "yeah thats secure... not. password must have a minimum of 5 characters."
     }
-    if (username && username.length > 15) {
+    if (userName && userName.length > 15) {
         error = "do you really want to type all that in every time? username must be less than 15 characters."
     }
     if (error) {
@@ -54,11 +54,11 @@ router.post('/register', async (req, res) => {
     } else {
         const newUser = await Users.findOne({
             where: {
-                username: username
+                userName: userName
             },
         });
         if (newUser) {
-            res.send(`${username} already exists. please try again`)
+            res.send(`${userName} already exists. please try again`)
         }
         if (!newUser) {
             const hashedPassword = await bcrypt.hash(password, 10);
