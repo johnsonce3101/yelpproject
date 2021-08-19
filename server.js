@@ -16,13 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//cors setup for api running on different domain (if 2 deployments)
-// const cors = require ("cors");
-// var corsOptions = {
-//     origin: "http://localhost:8081" //CHANGE FROM LOCAL
-// };
 
-// app.use(cors(corsOptions));
 
 const Sequelize = require('sequelize');
   
