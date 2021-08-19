@@ -1,11 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-const userModel = require('../models');
-//console.log(userModel);
-//const users = require('../models/users')
-const {restaurants} = require('../models');
-console.log(restaurants);
+const db = require('../models');
+const Users = db.Users;
+const bcrypt = require('bcryptjs');
+const bodyParser = require('body-parser');
+
+
+router.use(bodyParser.json())
+
+router.post('/login', (req, res, next) => {
+    let { username, password } = req.body;
+    passport.authenticate('local',
+        (err, user, info) => {
+            if (err) { return next(err); }
+            if (!user) {
+                return res.send(info.message);
+            }
+            req.logIn(user, err => {
+                if (err) {
+                    return next(err);
+                }
+                console.log('user in login:', user)
+                return res.send('Successfully Authenticated User');
+            })
+        }
+    )(req, res, next);
+});
+
 router.get('/login', (req, res) => {
     res.render('login')
 });
@@ -15,22 +37,59 @@ router.get('/register', (req, res) => {
 });
 
 
-router.post('/register', (req, res) => {
-    userModel.users.findAll({
-        where: {
-            name: req.body.name
+router.post('/register', async (req, res) => {
+    let{username, password} = req.body
+    let error;
+    if (!username || !password) {
+        error ="Please have a brain and fill out the fields.";
+    }
+    if (password && password.length < 5) {
+        error = "yeah thats secure... not. password must have a minimum of 5 characters."
+    }
+    if (username && username.length > 15) {
+        error = "do you really want to type all that in every time? username must be less than 15 characters."
+    }
+    if (error) {
+        res.send(error);
+    } else {
+        const newUser = await Users.findOne({
+            where: {
+                username: username
+            },
+        });
+        if (newUser) {
+            res.send(`${username} already exists. please try again`)
         }
-    }).then(user => {
-        console.log(user.name)
-        res.render('template', {
-            message: "Registered!"
-        })
-    })
+        if (!newUser) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const createUser = await Users.create({
+                name: name,
+                email: email,
+                userName: userName,
+                password: hashedPassword
+            });
+            res.send(`Welcome! The user, ${userName}, was created.`);
+        };
+    }
 });
 
-
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard')
+router.get('/user', (reg, res) => {
+    if (req.user) {
+        res.send(req.user)
+    }
+    if (!req.user) { 
+        res.send("user not logged");
+    }
+});
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.session.destroy();
+    res.status(200).send("logged out");
+});
+router.get('/status', (req, res) => {
+    res.send(req.isAuthenticated())
 });
 
-module.exports = router
+module.exports = router;
+
