@@ -28,6 +28,21 @@ router.post('/login', (req, res, next) => {
     )(req, res, next);
 });
 
+exports.isLocalAuthenticated = function (req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/login'); }
+        req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.send('Successfully authenticated User');
+        });
+      })(req, res, next);
+    };
+
+
+
+        
+
 router.get('/login', (req, res) => {
     res.render('login')
 });
