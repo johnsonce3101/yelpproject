@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-const userModel = require('../models')
+const userModel = require('../models');
 
 
 router.get('/login', (req, res) => {
@@ -18,17 +18,36 @@ router.post('/register', (req, res) => {
         where: {
             user_name: req.body.user_name
         }
-    }).then(user => {
-        console.log(user.user_name)
-        res.render('template', {
-            message: "Registered!"
-        })
-    })
+        if (!newUser) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const createUser = await Users.create({
+                name: name,
+                email: email,
+                userName: userName,
+                password: hashedPassword
+            });
+            res.send(`Welcome! The user, ${userName}, was created.`);
+        };
+    }
 });
 
-
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard')
+router.get('/user', (reg, res) => {
+    if (req.user) {
+        res.send(req.user)
+    }
+    if (!req.user) { 
+        res.send("user not logged");
+    }
+});
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.session.destroy();
+    res.status(200).send("logged out");
+});
+router.get('/status', (req, res) => {
+    res.send(req.isAuthenticated())
 });
 
-module.exports = router
+module.exports = router;
+
