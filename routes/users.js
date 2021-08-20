@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
 const db = require('../models');
-const Users = db.Users;
+const Users = db.users;
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const ensureAuthenticated = require('../routes/ensureAuthenticated');
-
+const passport = require('passport');
 router.use(bodyParser.json())
-
+router.use(passport.initialize());
+router.use(passport.session())
 router.post('/login', (req, res, next) => {
     let { userName, password } = req.body;
     passport.authenticate('local',
@@ -47,35 +48,27 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
-router.get('/register', (req, res) => {
-    res.render('register')
-});
+// router.get('/register', (req, res) => {
+//     res.render('register')
+// });
 
-
+// router.post('/register', (req, res) => {
+//     res.send('register post route')
+// })
 router.post('/register', async (req, res) => {
-    let{userName, password} = req.body
-    let error;
-    if (!userName || !password) {
-        error ="Please have a brain and fill out the fields.";
-    }
-    if (password && password.length < 5) {
-        error = "yeah thats secure... not. password must have a minimum of 5 characters."
-    }
-    if (userName && userName.length > 15) {
-        error = "do you really want to type all that in every time? username must be less than 15 characters."
-    }
-    if (error) {
-        res.send(error);
-    } else {
-        const newUser = await Users.findOne({
+    
+    let{name, email, userName, password} = req.body
+        const newUser = await Users.findAll({
             where: {
-                userName: userName
+                name: name,
+                email: email,
+                // userName: userName
             },
         });
-        if (newUser) {
+        if (!newUser) {
             res.send(`${userName} already exists. please try again`)
         }
-        if (!newUser) {
+        else {
             const hashedPassword = await bcrypt.hash(password, 10);
 
             const createUser = await Users.create({
@@ -84,10 +77,12 @@ router.post('/register', async (req, res) => {
                 userName: userName,
                 password: hashedPassword
             });
-            res.send(`Welcome! The user, ${userName}, was created.`);
+            res.redirect(`/users/login`);
+            
         };
-    }
-});
+    });
+
+
 
 router.get('/user', (reg, res) => {
     if (req.user) {
