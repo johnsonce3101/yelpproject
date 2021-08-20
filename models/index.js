@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 //function to get filenames in dir with ext
 const basename = path.basename(__filename);
 //use login information contained in "development"
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'production';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
