@@ -22,22 +22,26 @@
     <div class="container">
     <h1 style="font-size: 5vw;">Register Page</h1>
 
-    <form action="/register" method="POST">
+    <form action="/users/register" method="POST">
         <div style="font-size: 3vw;" class="text">
             <label for="name">Name:</label>
-            <input class="inputN" type="text" id="name" for="name" required>
+            <input name="name" class="inputN" type="text" id="name" for="name" required>
         </div>
         <div style="font-size: 3vw;" class="text">
             <label for="email">Email:</label>
-            <input class="inputE" type="email" id="email" for="email" required>
-        </div><!--add username field-->
+            <input name="email" class="inputE" type="email" id="email" for="email" required>
+        </div>
+        <div style="font-size: 3vw;" class="text">
+            <label for="userName">Username:</label>
+            <input name="userName" class="inputN" type="userName" id="userName" for="userName" required>
+        </div>
         <div style="font-size: 3vw;" class="text">
             <label for="password">Password:</label>
-            <input class="input" type="password" id="password" for="password" required>
+            <input name="password" class="input" type="password" id="password" for="password" required>
         </div>
         <div style="font-size: 3vw;" class="text">
             <label for="password2">Confirm Password:</label>
-            <input class="input" type="password2" id="password2" for="password2" required>
+            <input name="password2" class="input" type="password2" id="password2" for="password2" required>
         </div>
         <div class="button">
         <button class="btnr" type="submit">Register</button>
