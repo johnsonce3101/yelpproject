@@ -21,22 +21,22 @@
     
     <!--user input text doesnt fit box-->
     <h1 style="font-size: 5vw;">Login Page</h1>
-    <form action="/login" method="POST">
+    <form action="/users/login" method="POST">
         <div style="font-size: 3vw;" class="text">
                 <label for="name">Name:</label>
-                <input class="inputN" type="text" id="name" for="name" required>
+                <input name="name" class="inputN" type="text" id="name" for="name" required>
             </div>
             <div style="font-size: 3vw;" class="text">
                 <label for="email">Email:</label>
-                <input class="inputE" type="email" id="email" for="email" required>
+                <input name="email" class="inputE" type="email" id="email" for="email" required>
+            </div>
+            <div style="font-size: 3vw;" class="text">
+                <label for="userName">Username:</label>
+                <input name="userName" class="input" type="userName" id="userName" for="userName" required>
             </div>
             <div style="font-size: 3vw;" class="text">
                 <label for="password">Password:</label>
-                <input class="input" type="password" id="password" for="password" required>
-            </div>
-            <div style="font-size: 3vw;" class="text">
-                <label for="userName">username:</label>
-                <input class="input" type="userName" id="userName" for="userName" required>
+                <input name="password" class="input" type="password" id="password" for="password" required>
             </div>
             <div class="buttons">
                 <button class="btn" type="submit">Login</button>
