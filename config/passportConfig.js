@@ -1,14 +1,18 @@
 const db = require('../models');
-const User = db.Users;
+const users = db.users;
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 
 const NO_USER_FOUND = "NO USER FOUND.";
 module.exports = (passport) => {
     passport.use('local-strategy', new LocalStrategy(
+        {
+            usernameField: 'userName',
+            passwordField: 'password'
+        },
         function (userName, password, done) {
             console.log("hey")
-            const user = User.findOne({
+            const user = users.findOne({
                 where: {
                     name: name,
                     email: email,
@@ -30,7 +34,7 @@ module.exports = (passport) => {
     });
     passport.deserializeUser(async (name, done) => {
         try {
-            let user = await User.findOne({
+            let user = await users.findOne({
                 where: {
                     name: name,
                     email: email,
