@@ -1,13 +1,13 @@
 const db = require('../models');
 const User = db.Users;
-const bcrypt = require('bcryptjs');
-const localStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const LocalStrategy = require('passport-local');
 
 const NO_USER_FOUND = "NO USER FOUND.";
-
-module.exports = (passport) => {
-    passport.use(new localStrategy(
-        async function (user, password, done) {
+const passport = require('passport');
+module.exports = () => {
+    passport.use(new LocalStrategy(
+        async function (userName, password, done) {
             const user = await User.findOne({
                 where: {
                     name: name,

@@ -14,13 +14,6 @@ router.get('/', async (req, res) => {
     })
 });
 
-router.get('/users/register', (req, res) => {
-    res.render('register')
-});
-
-router.get('users/login', (req, res) => {
-    res.render('login')
-});
 
 router.post('/register', async (req, res) => {
     let{name, email, userName, password} = req.body

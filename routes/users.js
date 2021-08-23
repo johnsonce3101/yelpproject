@@ -2,32 +2,42 @@ const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
 const db = require('../models');
-const Users = db.users;
+const Users = require('../models/users')
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const ensureAuthenticated = require('../routes/ensureAuthenticated');
 const passport = require('passport');
+const postgres = require('../config/config')
 router.use(bodyParser.json())
-router.use(passport.initialize());
-router.use(passport.session())
-router.post('/login', (req, res, next) => {
-    let { userName, password } = req.body;
-    passport.authenticate('local',
-        (err, user, info) => {
-            if (err) { return next(err); }
-            if (!user) {
-                return res.send(info.message);
-            }
-            req.logIn(user, err => {
-                if (err) {
-                    return next(err);
-                }
-                console.log('user in login:', user)
-                return res.send('Successfully Authenticated User');
-            })
+
+router.post('/login', 
+    (req, res, next) => {
+        console.log(req, res)
+        next()
+    },
+    passport.authenticate(
+        'local', 
+        {
+            failureRedirect: '/wgf' 
         }
-    )(req, res, next);
-});
+    ),
+    (req, res) => {
+        res.redirect('/');
+    }
+);
+
+
+// passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//       User.findOne({ username: username }, function (err, user) {
+//         if (err) { return done(err); }
+//         if (!user) { return done(null, false); }
+//         if (!user.verifyPassword(password)) { return done(null, false); }
+//         return done(null, user);
+//       });
+//     }
+//   ));
+
 
 exports.isLocalAuthenticated = function (req, res, next) {
     passport.authenticate('local', function(err, user, info) {
@@ -48,9 +58,9 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
-// router.get('/register', (req, res) => {
-//     res.render('register')
-// });
+router.get('/register', (req, res) => {
+    res.render('register')
+});
 
 // router.post('/register', (req, res) => {
 //     res.send('register post route')
@@ -58,20 +68,23 @@ router.get('/login', (req, res) => {
 router.post('/register', async (req, res) => {
     
     let{name, email, userName, password} = req.body
-        const newUser = await Users.findAll({
+        const newUser = await db.users.findAll({
             where: {
                 name: name,
                 email: email,
                 // userName: userName
-            },
+            }, 
         });
+
+    console.log(name);
+
         if (!newUser) {
             res.send(`${userName} already exists. please try again`)
         }
         else {
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            const createUser = await Users.create({
+            const createUser = await db.users.create({
                 name: name,
                 email: email,
                 userName: userName,
