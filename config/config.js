@@ -1,7 +1,7 @@
-//require('dotenv').config();
+require('dotenv').config();
 
 module.exports = {
-  "production": {
+  "development": {
     "username": "",
     "password": null,
     "database": "yelpdb",
@@ -23,7 +23,7 @@ module.exports = {
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
     "dialect": "postgres",
-    "protocol": "postgres", 
+    "protocol": "postgres",
     "dialectOptions": {
       "ssl": {
         "require": true,
