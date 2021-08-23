@@ -7,40 +7,47 @@ const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const ensureAuthenticated = require('../routes/ensureAuthenticated');
 const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const postgres = require('../config/config')
 router.use(bodyParser.json())
 router.use(passport.initialize());
 router.use(passport.session())
-router.post('/login', (req, res, next) => {
-    let { userName, password } = req.body;
-    passport.authenticate('local',
-        (err, user, info) => {
-            if (err) { return next(err); }
-            if (!user) {
-                return res.send(info.message);
-            }
-            req.logIn(user, err => {
-                if (err) {
-                    return next(err);
-                }
-                console.log('user in login:', user)
-                return res.send('Successfully Authenticated User');
-            })
-        }
-    )(req, res, next);
-});
+// router.post('/login', (req, res, next) => {
+//     let { userName, password } = req.body;
+//     passport.authenticate('local',
+//         (err, user, info) => {
+//             if (err) { return next(err); }
+//             if (!user) {
+//                 return res.send(info.message);
+//             }
+//             req.logIn(user, err => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//                 console.log('user in login:', user)
+//                 return res.send('Successfully Authenticated User');
+//             })
+//         }
+//     )(req, res, next);
+// });
 
 
-// passport.use(new LocalStrategy(
-//     function(username, password, done) {
-//       User.findOne({ username: username }, function (err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-//         if (!user.verifyPassword(password)) { return done(null, false); }
-//         return done(null, user);
-//       });
-//     }
-//   ));
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+      User.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (!user.verifyPassword(password)) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+  ));
+
+  router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/users/login' }),
+  (req, res) => {
+    res.redirect('/users/dashboard');
+  });
 
 
 exports.isLocalAuthenticated = function (req, res, next) {
@@ -100,6 +107,9 @@ router.post('/register', async (req, res) => {
     });
 
 
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard')
+});
 
 router.get('/user', (reg, res) => {
     if (req.user) {

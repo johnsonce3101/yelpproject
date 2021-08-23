@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 8002; 
-const bodyParser = require('body-parser');
 const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 const rootController = require('./routes/index');
 const userController = require('./routes/users')
@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended: true })); //extended true, any type
 //express setup for static css and js
 app.use(express.static('public'));
 //app.use(session({ secret: "cats" }));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 // require('./config/passportConfig')(passport);
@@ -33,7 +32,7 @@ app.use(passport.session());
 //  testdb();
 
 app.engine('html', es6Renderer);
-app.set('views', 'templates');
+// app.set('views', 'templates');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html'); 
 
