@@ -1,14 +1,14 @@
 const db = require('../models');
 const User = db.Users;
 const bcrypt = require('bcrypt');
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
 
 const NO_USER_FOUND = "NO USER FOUND.";
-const passport = require('passport');
-module.exports = () => {
-    passport.use(new LocalStrategy(
-        async function (userName, password, done) {
-            const user = await User.findOne({
+module.exports = (passport) => {
+    passport.use('local-strategy', new LocalStrategy(
+        function (userName, password, done) {
+            console.log("hey")
+            const user = User.findOne({
                 where: {
                     name: name,
                     email: email,
@@ -18,7 +18,7 @@ module.exports = () => {
             if (!user) {
                 return done(null, false, {message: NO_USER_FOUND});
             }
-            let matched = await bcrypt.compare(password, user.password);
+            let matched = bcrypt.compare(password, user.password);
             if (!matched) {
                 return done(null, false, { message: NO_USER_FOUND});
             }

@@ -1,25 +1,25 @@
 //express setup, for REST API
 const express = require('express');
 const app = express();
+const session = require('express-session')
 const path = require('path');
 const PORT = process.env.PORT || 8002; 
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const bcrypt = require('bcrypt');
 const rootController = require('./routes/index');
-const userController = require('./routes/users')
 const es6Renderer = require('express-es6-template-engine');
 const Sequelize = require('sequelize');
 const postgres = require('./config/config');
-require('./config/passportConfig')();
+require('./config/passportConfig')(passport);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //extended true, any type
 //express setup for static css and js
 app.use(express.static('public'));
-//app.use(session({ secret: "cats" }));
+
+app.use(session({ secret: "cats" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
-app.use(passport.authenticate('session'));
+app.use(passport.session());
 // require('./config/passportConfig')(passport);
 
 // require('dotenv').config();
@@ -42,6 +42,7 @@ app.set('view engine', 'html');
 app.use('/',rootController);
 
 // Controller to render the users route
+const userController = require('./routes/users')(passport)
 app.use('/users', userController);
 
 app.listen(PORT, () => {
