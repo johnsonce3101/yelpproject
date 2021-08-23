@@ -27,3 +27,5 @@ Running migrations locally are easier:
 npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
 ```
+
+changed users to lower case in passportconfig
