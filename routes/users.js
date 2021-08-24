@@ -44,7 +44,7 @@ passport.use(new LocalStrategy(
   ));
 
   router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/users/login' }),
+//   passport.authenticate('local', { failureRedirect: '/users/login' }),
   (req, res) => {
     res.redirect('/users/dashboard');
   });
