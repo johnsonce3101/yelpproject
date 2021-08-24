@@ -16,11 +16,14 @@ Javascript
 PostgresSQL
 Passport.js(Inoperative)
 Heroku(Hosting)
+Express.js
 
 ## Help
- Unable to get passport.js to Authenticate
+Passport.js to Authentication
 
 ## Authors
 Clark Adkins  shreckswamp21@gmail.com
+
 Jonathan Ruiz clarkadkins@gmail.com
+
 Christopher Johnson Johnsonce3101@gmail.com
