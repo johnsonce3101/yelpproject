@@ -18,8 +18,9 @@ app.use(express.static('public'));
 
 app.use(session({ secret: "cats" }));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 // require('./config/passportConfig')(passport);
 
 // require('dotenv').config();
