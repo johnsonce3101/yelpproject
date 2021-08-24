@@ -10,7 +10,7 @@ module.exports = (passport) => {
         async function (user, password, done) {
             const user = await User.findOne({
                 where: {
-                    name: name,
+                    name: user,
                     email: email,
                     userName: userName
                 }
