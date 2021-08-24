@@ -44,22 +44,22 @@ passport.use(new LocalStrategy(
   ));
 
   router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/users/login' }),
-  (req, res) => {
+//   passport.authenticate('local', { successRedirect: '/users/dashboard',  failureRedirect: '/users/login', failureFlash: true }),
+  (req, res) => { 
     res.redirect('/users/dashboard');
   });
 
 
-exports.isLocalAuthenticated = function (req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err) { return next(err); }
-        if (!user) { return res.redirect('/login'); }
-        req.logIn(user, function(err) {
-          if (err) { return next(err); }
-          return res.send('Successfully authenticated User');
-        });
-      })(req, res, next);
-    };
+// exports.isLocalAuthenticated = function (req, res, next) {
+//     passport.authenticate('local', function(err, user, info) {
+//         if (err) { return next(err); }
+//         if (!user) { return res.redirect('/login'); }
+//         req.logIn(user, function(err) {
+//           if (err) { return next(err); }
+//           return res.send('Successfully authenticated User');
+//         });
+//       })(req, res, next);
+//     };
 
 
 
