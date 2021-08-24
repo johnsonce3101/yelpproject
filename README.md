@@ -1,5 +1,4 @@
 # yelpproject
-# yelpproject
 
 A re-imagined and less robust attempt at cloning yelp.com entitled Food Oracle to review local restaurants 
 (App not fully functioning)
