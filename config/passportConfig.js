@@ -6,11 +6,11 @@ const localStrategy = require('passport-local').Strategy;
 const NO_USER_FOUND = "NO USER FOUND.";
 
 module.exports = (passport) => {
-    passport.use(new localStrategy(
+    passport.use(new LocalStrategy(
         async function (user, password, done) {
             const user = await User.findOne({
                 where: {
-                    name: name,
+                    name: user,
                     email: email,
                     userName: userName
                 }
