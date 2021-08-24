@@ -1,6 +1,6 @@
 # yelpproject
 
-A re-imagined and less robust attempt at cloning yelp.com entitled Food Oracle to review local restaurants 
+A re-imagined, less robust attempt at cloning yelp.com entitled Food Oracle to review/rate local restaurants 
 (App not fully functioning)
 
 ## Description
