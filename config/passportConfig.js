@@ -1,26 +1,30 @@
 const db = require('../models');
 const User = db.Users;
 const bcrypt = require('bcryptjs');
-const LocalStrategy = require('passport-local').Strategy;
+const localStrategy = require('passport-local').Strategy;
 
 const NO_USER_FOUND = "NO USER FOUND.";
 
 module.exports = (passport) => {
     passport.use(new LocalStrategy(
-        function(username, password, done) {
-          User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
+        async function (user, password, done) {
+            const user = await User.findOne({
+                where: {
+                    name: user,
+                    email: email,
+                    userName: userName
+                }
+            }).catch(error => {return dont(error)});
             if (!user) {
-              return done(null, false, { message: 'Incorrect username.' });
+                return done(null, false, {message: NO_USER_FOUND});
             }
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
+            let matched = await bcrypt.compare(password, user.password);
+            if (!matched) {
+                return done(null, false, { message: NO_USER_FOUND});
             }
-            return done(null, user);
-          });
+            return done(null, user); //FIX
         }
-      ));
-    
+    ))
     passport.serializeUser((user, done) => {
         done(null, user.name);
     });
