@@ -1,10 +1,9 @@
-// models are the tables that are created in the db
 'use strict';
 const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class users extends Model {
+  class reviews extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,14 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  users.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    userName: DataTypes.STRING,
-    password: DataTypes.STRING,
+  reviews.init({
+    review_content: DataTypes.STRING,
+    review_category: DataTypes.STRING,
+    restaurant_name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'users',
+    modelName: 'reviews',
   });
-  return users;
+  return reviews;
 };
