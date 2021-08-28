@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db')
+const db = require('../models')
+
 router.get('/', async (req, res) => {
     res.render('template',{
         locals: {
@@ -41,16 +42,56 @@ router.post('/register', async (req, res) => {
         };
     });
 
-    router.get('/restaurants',(req, res) => {
-        const restaurants = db.find(restaurants => {
-            return restaurants
-        })
-        console.log(restaurants)
-        res.json(restaurants)
-        res.render('restaurants', {Name: db.name})
+    router.get('/restaurants/vietnamese', (req, res) => {
+       db.restaurants.findAll({
+           where: {category: 'Vietnamese'}
+       }).then((results) => {
+           console.log(results)
+           res.render('vietnamese', {
+               locals: {
+                   vietnameseRestaurants: results
+               }
+           })
+       }) 
     })
-// router.post('/register', () => {
-//     console.log('works')
-// });
+
+    router.post('/restaurants/vietnamese/reviews', (req, res) => {
+        console.log(req.body)
+        db.reviews.create({ review_content: req.body.content, review_category: req.body.rCategory, restaurant_name: req.body.rName}).then((results) => {
+            console.log(results)
+        })
+        res.json({
+
+        })
+    })
+
+    router.get('/restaurants/vietnamese/reviews', (req, res) => {
+        db.reviews.findAll().then((results) => {
+            console.log(results)
+            res.render('vietnameseReviews', {
+                locals: {
+                    vietnameseReviews: results
+                }
+            })
+        })
+    })
+
+    router.delete('/restaurants/vietnamese/reviews/:name', (req, res) => {
+        console.log(req.params.name)
+       db.reviews.destroy({
+           where: {
+               restaurant_name: req.params.name
+           }
+       }).then((results) => {
+           res.json(results)
+       })
+    })
+
+    router.put('/restaurants/vietnamese/reviews/:name', (req, res) => {
+        console.log(req.params.name)
+        db.reviews.update({review_content: req.body.newContent}, {where: {restaurant_name: req.params.name}}).then((results) => res.json(results))
+        
+    })
+
 
 module.exports = router;
