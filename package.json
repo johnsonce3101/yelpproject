@@ -28,5 +28,9 @@
     "pg-promise": "^10.11.0",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0"
+  },
+  "engines": {
+    "node": "16.4.1",
+    "npm": "7.18.1"
   }
 }
