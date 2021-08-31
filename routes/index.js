@@ -42,6 +42,8 @@ router.post('/register', async (req, res) => {
         };
     });
 
+    // Vietnamese route
+
     router.get('/restaurants/vietnamese', (req, res) => {
        db.restaurants.findAll({
            where: {category: 'Vietnamese'}
