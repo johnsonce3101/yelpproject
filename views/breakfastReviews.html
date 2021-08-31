@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>foodOracle | Vietnamese reviews</title>
+    <title>foodOracle | Breakfast</title>
 </head>
 <body>
-
-    ${vietnameseReviews.map(results => `
+    ${breakfastReviews.map(results => `
         <h1>${results.restaurant_name}</h1>
         <p>${results.review_content}</p>
         <!-- <form>
@@ -17,6 +16,7 @@
         </form> -->
         <button class="deleteReview">Delete</button>
     `).join('')}
+
     <script>
         const deleteButtons = document.getElementsByClassName('deleteReview')
         console.log(deleteButtons[0].previousElementSibling.previousElementSibling.innerHTML)
@@ -36,20 +36,7 @@
 
 
         }
-        const updateButtons = document.getElementsByClassName('updateBtn')
-        for (let i = 0; i < updateButtons.length; i++){
-            updateButtons[i].addEventListener('click', (e) => {
-                e.preventDefault()
-                let name = e.target.parentElement.previousElementSibling.previousElementSibling.innerHTML
-                fetch('/restaurants/vietnamese/reviews/' + name, {
-                    method: 'PUT'
-                }).then(response => response.json())
-                .then((data) => {
-                    console.log(data)
-                    // location.reload();
-                })
-            })
-        }
+       
     </script>
 </body>
 </html>

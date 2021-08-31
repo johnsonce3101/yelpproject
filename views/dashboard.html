@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="globestyle.css" rel="stylesheet" type = "text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>Document</title>
+    <title>foodOralce | Dashboard</title>
 </head>
 <body style="background-color: #f3f3f3;">
 
@@ -25,23 +25,39 @@
 
         <div class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item">
+                <a class="navbar-item" href="/">
                     Home
                 </a>
             </div> <!-- / navbar-start -->
         </div> <!-- / navbar-menu -->
 
         <div class="navbar-end">
-            <div class="navbar-item">
+            <div class="navbar-item has-dropdown is-hoverable">
                 <div class="buttons">
                     <a class="button is-light">
                         <strong>Write A Review</strong>
                     </a>
-                    <a class="button is-danger">
-                        Log Out
-                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="/restaurants/fastfood">
+                          Fast Food
+                        </a>
+                        <a class="navbar-item" href="/restaurants/breakfast">
+                          BreakFast
+                        </a>
+                        <a class="navbar-item" href="/restaurants/vietnamese">
+                          Vietnamese
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                          Report an issue
+                        </a>
+                      </div> <!--/ navbar-dropdown-->
+                      
                 </div>
             </div> <!-- / navbar-item-->
+            <a class="button is-danger" style="margin-top: 0.4rem;" href="/">
+                Log Out
+            </a>
         </div> <!-- /navbar-end-->
 
     </nav>
@@ -85,7 +101,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content" style="text-align: center; font-size: larger;">
-                            <a href="#">Breakfast</a>
+                            <a href="/restaurants/breakfast">Breakfast</a>
                         </div>
                     </div>
                 </div>
