@@ -4,21 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>foodOracle | Vietnamese</title>
+    <title>foodOracle | Breakfast</title>
 </head>
 <body>
-    <ul>
-        <a href="/restaurants/vietnamese/reviews">See all Vietnamese reviews</a>
-        ${vietnameseRestaurants.map(results => `
+    <a href="/restaurants/breakfast/reviews">See all Breakfast reviews</a>
+        ${BreakfastRestaurants.map(results => `
             <li>${results.name}</li>
-            <form action="/restaurants/vietnamese/reviews" method="POST">
+            <form action="/restaurants/breakfast/reviews" method="POST">
             <input type="text" name="content" id="content placeholder="">
             <input type="hidden" name="rName" id="rName" value=${results.name}>
             <input type="hidden" name="rCategory" id="rCategory" value=${results.category}>
             <input type="submit" value="Submit">
             </form>
         `).join('')}
-    </ul>
-
 </body>
 </html>

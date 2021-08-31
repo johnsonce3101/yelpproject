@@ -93,6 +93,100 @@ router.post('/register', async (req, res) => {
         
     })
 
+    // Breakfast route
+
+    router.get('/restaurants/breakfast', (req, res) => {
+        db.restaurants.findAll({
+            where: {category: 'Breakfast'}
+        }).then((results) => {
+            console.log(results)
+            res.render('breakfast', {
+                locals: {
+                    BreakfastRestaurants: results
+                }
+            })
+        }) 
+     })
+
+     router.get('/restaurants/breakfast/reviews', (req, res) => {
+        db.reviews.findAll().then((results) => {
+            console.log(results)
+            res.render('breakfastReviews', {
+                locals: {
+                    breakfastReviews: results
+                }
+            })
+        })
+    })
+
+    router.post('/restaurants/breakfast/reviews', (req, res) => {
+        console.log(req.body)
+        db.reviews.create({ review_content: req.body.content, review_category: req.body.rCategory, restaurant_name: req.body.rName}).then((results) => {
+            console.log(results)
+        })
+        res.json({
+
+        })
+    })
+
+    router.delete('/restaurants/breakfast/reviews/:name', (req, res) => {
+        console.log(req.params.name)
+       db.reviews.destroy({
+           where: {
+               restaurant_name: req.params.name
+           }
+       }).then((results) => {
+           res.json(results)
+       })
+    })
+
+    // FastFood Route
+    router.get('/restaurants/fastfood', (req, res) => {
+        db.restaurants.findAll({
+            where: {category: 'Fast Food'}
+        }).then((results) => {
+            console.log(results)
+            res.render('fastFood', {
+                locals: {
+                    fastFoodRestaurants: results
+                }
+            })
+        }) 
+     })
+
+     router.get('/restaurants/fastfood/reviews', (req, res) => {
+        db.reviews.findAll().then((results) => {
+            console.log(results)
+            res.render('fastFoodReviews', {
+                locals: {
+                    fastFoodReviews: results
+                }
+            })
+        })
+    })
+
+    router.post('/restaurants/fastfood/reviews', (req, res) => {
+        console.log(req.body)
+        db.reviews.create({ review_content: req.body.content, review_category: req.body.rCategory, restaurant_name: req.body.rName}).then((results) => {
+            console.log(results)
+        })
+        res.json({
+
+        })
+    })
+
+    router.delete('/restaurants/fastfood/reviews/:name', (req, res) => {
+        console.log(req.params.name)
+       db.reviews.destroy({
+           where: {
+               restaurant_name: req.params.name
+           }
+       }).then((results) => {
+           res.json(results)
+       })
+    })
+
+
 
 
 module.exports = router;
