@@ -98,7 +98,7 @@ router.post('/register', async (req, res) => {
             const createUser = await db.users.create({
                 name: name,
                 email: email,
-                userName: userName,
+                username: userName,
                 password: hashedPassword
             });
             res.redirect(`/users/login`);
